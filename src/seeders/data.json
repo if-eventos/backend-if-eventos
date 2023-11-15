@@ -1,0 +1,92 @@
+{
+    "user": [
+        {
+            "name": "Lucas",
+            "email": "lucas@email.com",
+            "telefone": "91122-4400",
+            "password": "$2a$10$hUDXADZWfIq3S0zI0GouO.LM2EZRh1Uyzpy5BYTE5C9WxNgH0cEdy",
+            "minicurriculo": "Formado no IFPB",
+            "urlsite": "https://www.lucas.com",
+            "curriculo_redesocial": "@Lucas",
+            "ehPalestrante": 1
+        },
+        {
+            "name": "Juju",
+            "email": "juju@email.com",
+            "telefone": "94545-1111",
+            "password": "$2a$10$QlpKv/0Cc2irYeW1yDAvjumTLctqauZcptAyMHZn4vE6Z82kyhMma",
+            "minicurriculo": "Formado no IFPB",
+            "urlsite": "https://www.Juliana.com",
+            "curriculo_redesocial": "@Juju",
+            "ehPalestrante": 1
+        },
+        {
+            "name": "Marcos",
+            "email": "marcos@email.com",
+            "telefone": "94545-2222",
+            "password": "$2a$10$xWTpKhpkfarPEHiYoGL9zuRsdDRBGkm.e5s1M5TiKRlqkbVVE1oOG",
+            "minicurriculo": null,
+            "urlsite": null,
+            "curriculo_redesocial": null,
+            "ehPalestrante": 0
+        },
+        {
+            "name": "Gabi",
+            "email": "gabi@email.com",
+            "telefone": "94747-3333",
+            "password": "$2a$10$6osCY4Lh./lcD8/fXSzGvO9YUjJbI7iNTtXpUdckE6dvZWcRxATEq",
+            "minicurriculo": null,
+            "urlsite": null,
+            "curriculo_redesocial": null,
+            "ehPalestrante": 0
+        }
+    ],
+    "evento": [
+        {
+            "nome": "Evento Economia",
+            "descricao": "Uma discussao sobre economia",
+            "data_hora": "2023-07-11",
+            "urlsiteoficial": "ambiente.com.br",
+            "createBy": 2
+        },
+        {
+            "nome": "Evento Acolhimento",
+            "descricao": "Acolhimento dos novos alunos",
+            "data_hora": "2023-07-01",
+            "urlsiteoficial": "ifpb.com.br",
+            "createBy": 3
+        }
+    ],
+    "ouvintes_evento": [
+        {
+            "idEvento": 1,
+            "emailUser": "lucas@email.com"
+        },
+        {
+            "idEvento": 1,
+            "emailUser": "juju@email.com"
+        },
+        {
+            "idEvento": 1,
+            "emailUser": "marcos@email.com"
+        },
+        {
+            "idEvento": 2,
+            "emailUser": "lucas@email.com"
+        },
+        {
+            "idEvento": 2,
+            "emailUser": "marcos@email.com"
+        }
+    ],
+    "palestrantes_evento": [
+        {
+            "idEvento": 1,
+            "emailUser": "juju@email.com"
+        },
+        {
+            "idEvento": 2,
+            "emailUser": "lucas@email.com"
+        }
+    ]
+}
