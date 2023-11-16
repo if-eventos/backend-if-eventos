@@ -34,11 +34,11 @@ const swaggerDefinition = {
       'Ela utiliza dados sobre Eventos cadastrados',
     license: {
       name: 'Licenciado sob GPL.',
-      url: 'https://github.com/ifpb-cz-ads/pw1-2023-1-projeto-eventos-academicos',
+      url: 'https://github.com/if-eventos/backend-if-eventos',
     },
     contact: {
       name: 'Grupo 6',
-      url: 'https://github.com/ifpb-cz-ads/pw1-2023-1-projeto-eventos-academicos',
+      url: 'https://github.com/if-eventos/backend-if-eventos',
     },
   },
   servers: [
@@ -48,7 +48,7 @@ const swaggerDefinition = {
     }
     ,
     {
-      url: 'https://projeto-eventos-academicos-2023.onrender.com',
+      url: 'https://if-eventos-backend.onrender.com/',
       description: 'Servidor de produção',
     },
   ],
