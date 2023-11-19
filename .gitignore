@@ -4,6 +4,10 @@ database.sqlite
 teste.js
 sessions
 
+public/imgs/*
+!acolhimento.jpg
+!economia.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
