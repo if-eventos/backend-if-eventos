@@ -274,15 +274,17 @@ router.patch('/atualize/:id', middleware.isAPIAuthenticated, celebrate({
  *       400:
  *         description: Nome do evento deve ser único.
  */
-router.post('/criar', middleware.isAPIAuthenticated, parser.single('image'), celebrate({
-    
-    [Segments.BODY]: Joi.object().keys({
+router.post('/criar', 
+    middleware.isAPIAuthenticated,
+    parser.single('image'), 
+    celebrate({
+      [Segments.BODY]: Joi.object().keys({
         nome: Joi.string().required(),
         descricao: Joi.string().required(),
         data_hora: Joi.string().required(),
         urlsiteoficial: Joi.string().required(),
+      }),
     }),
-
-}), eventoApiController.create);
+    eventoApiController.create);
 
 module.exports = router;

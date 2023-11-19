@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
 const Evento = require('../models/Evento');
 
+const fs = require('fs');
+const path = require('path');
+
 const readAll = async (req, res) => {
     const eventos = await Evento.readAll();
     if (eventos) {
@@ -73,19 +76,32 @@ const update = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    try{
-        const { nome, descricao, data_hora, urlsiteoficial } = req.body;
-        const createBy = res.locals.ApiUserId;
+    const { nome, descricao, data_hora, urlsiteoficial } = req.body;
+    const createBy = res.locals.ApiUserId;
 
-        const image = `/imgs/${req.file.filename}`;
+    const image = `/imgs/${req.file.filename}`;
+
+    try{
         
         const evento = { nome, descricao, data_hora, urlsiteoficial, createBy, image }
 
         const eventoCriado = await Evento.create(evento);
         res.status(200).json({novoEvento: eventoCriado});
     } catch {
+
+        if (image) {
+            const imagePath = path.join('public', image);
+        
+            fs.rm(imagePath, (err) => {
+              if (err) {
+                console.log(err);
+              }
+            });
+        }
+
         res.status(400).json({error: "Nome do evento deve ser único."});
     }
+
 }
 
 module.exports = { readAll, readByID, destroy, update, create };
