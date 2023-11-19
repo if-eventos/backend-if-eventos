@@ -6,6 +6,18 @@ const Evento = require('../models/Evento');
 const fs = require('fs');
 const path = require('path');
 
+const removeImage = (image) => {
+    if (image) {
+        const imagePath = path.join('public', image);
+    
+        fs.rm(imagePath, (err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+    }
+}
+
 const readAll = async (req, res) => {
     const eventos = await Evento.readAll();
     if (eventos) {
@@ -32,7 +44,12 @@ const destroy = async (req, res) => {
   if(evento){
 
     if (evento.createBy == res.locals.ApiUserId) {
+
         const lastID = await Evento.destroy(id);
+
+        const { image } = evento;
+        removeImage(image);
+
         res.status(200).json({status: lastID});
         return;
     }
@@ -89,17 +106,9 @@ const create = async (req, res) => {
         res.status(200).json({novoEvento: eventoCriado});
     } catch {
 
-        if (image) {
-            const imagePath = path.join('public', image);
-        
-            fs.rm(imagePath, (err) => {
-              if (err) {
-                console.log(err);
-              }
-            });
-        }
-
+        removeImage(image);
         res.status(400).json({error: "Nome do evento deve ser único."});
+        return;
     }
 
 }
