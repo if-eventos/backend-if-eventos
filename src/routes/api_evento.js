@@ -99,7 +99,7 @@ const eventoApiController = require("../api_controller/eventoApiController");
 const path = require('path');
 const multer = require("multer");
 const { randomBytes } = require('node:crypto');
-const imagesPath = path.join('public', 'imgs');
+const imagesPath = path.join('public', 'imgs', 'events');
 
 const parser = multer({
     storage: multer.diskStorage({

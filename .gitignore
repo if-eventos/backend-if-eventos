@@ -4,7 +4,7 @@ database.sqlite
 teste.js
 sessions
 
-public/imgs/*
+public/imgs/events/*
 !acolhimento.jpg
 !economia.png
 

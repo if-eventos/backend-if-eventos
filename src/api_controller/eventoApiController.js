@@ -54,12 +54,15 @@ const update = async (req, res) => {
     const id = req.params.id;
 
     const evento = await Evento.readById(id);
-    const oldImage = evento.image;
 
+    const image = `/imgs/events/${req.file.filename}`;
+    
     if (evento) {
+
+        const oldImage = evento.image;
+
         if(evento.createBy == res.locals.ApiUserId) {
             const { nome, descricao, data_hora, urlsiteoficial } = req.body;
-            const image = `/imgs/${req.file.filename}`;
             const dados = { nome, descricao, data_hora, urlsiteoficial, image };
 
             try {
@@ -89,7 +92,7 @@ const create = async (req, res) => {
     const { nome, descricao, data_hora, urlsiteoficial } = req.body;
     const createBy = res.locals.ApiUserId;
 
-    const image = `/imgs/${req.file.filename}`;
+    const image = `/imgs/events/${req.file.filename}`;
 
     try{
         
