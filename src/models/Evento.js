@@ -71,16 +71,16 @@ async function update(id, data) {
         UPDATE
             evento
         SET
-            nome = ?, descricao = ?, data_hora = ?, urlsiteoficial = ?
+            nome = ?, descricao = ?, data_hora = ?, urlsiteoficial = ?, image = ?
         WHERE
             id = ?
     `;
 
     const db = await conn();
 
-    const { nome, descricao, data_hora, urlsiteoficial } = data;
+    const { nome, descricao, data_hora, urlsiteoficial, image } = data;
 
-    const { changes } = await db.run(sql, [nome, descricao, data_hora, urlsiteoficial, id]);
+    const { changes } = await db.run(sql, [nome, descricao, data_hora, urlsiteoficial, image, id]);
 
     return changes;
 }

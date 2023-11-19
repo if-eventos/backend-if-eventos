@@ -79,6 +79,10 @@
  *           type: string
  *           description: O site do evento.
  *           example: www.evento2.com
+ *         image:
+ *           type: file
+ *           description: Nova imagem do evento.
+ *           example: newImage.png
  *     New:
  *       type: object
  *       properties:
@@ -233,7 +237,7 @@ router.delete('/delete/:id', middleware.isAPIAuthenticated, celebrate({
  *       400:
  *         description: Nome do evento deve ser único.
  */
-router.patch('/atualize/:id', middleware.isAPIAuthenticated, celebrate({
+router.patch('/atualize/:id', middleware.isAPIAuthenticated, parser.single('image'), celebrate({
     
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.number().required(),

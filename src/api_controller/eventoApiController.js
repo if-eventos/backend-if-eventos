@@ -54,26 +54,32 @@ const update = async (req, res) => {
     const id = req.params.id;
 
     const evento = await Evento.readById(id);
+    const oldImage = evento.image;
 
     if (evento) {
         if(evento.createBy == res.locals.ApiUserId) {
             const { nome, descricao, data_hora, urlsiteoficial } = req.body;
-            const dados = { nome, descricao, data_hora, urlsiteoficial };
+            const image = `/imgs/${req.file.filename}`;
+            const dados = { nome, descricao, data_hora, urlsiteoficial, image };
 
             try {
                 const eventoAtualizado = await Evento.update(id, dados);
+                removeImage(oldImage);
                 res.status(200).json({eventUpdated: {updated: eventoAtualizado}});
                 return;
             } catch (error) {
+                removeImage(image);
                 res.status(400).json({error: "Nome do evento deve ser único."});
                 return;
             }
 
         } else {
+            removeImage(image);
             res.status(401).json({error: "Credenciais invalidas para esse pedido"});
             return;
         }
     } else {
+        removeImage(image);
         res.status(404).json({error: 'Evento não encontrado!'});
         return;
     }
