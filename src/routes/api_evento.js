@@ -56,6 +56,10 @@
  *           type: string
  *           description: O site do evento.
  *           example: www.evento.com
+ *         image:
+ *           type: file
+ *           description: A imagem do evento.
+ *           example: banner.png
  *     AtualizarEvento:
  *       type: object
  *       properties:
