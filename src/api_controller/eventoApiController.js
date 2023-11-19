@@ -3,20 +3,7 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
 const Evento = require('../models/Evento');
 
-const fs = require('fs');
-const path = require('path');
-
-const removeImage = (image) => {
-    if (image) {
-        const imagePath = path.join('public', image);
-    
-        fs.rm(imagePath, (err) => {
-          if (err) {
-            console.log(err);
-          }
-        });
-    }
-}
+const removeImage = require('../imageUtils/removeImage');
 
 const readAll = async (req, res) => {
     const eventos = await Evento.readAll();
