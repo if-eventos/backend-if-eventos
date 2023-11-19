@@ -47,14 +47,16 @@
             "descricao": "Uma discussao sobre economia",
             "data_hora": "2023-07-11",
             "urlsiteoficial": "ambiente.com.br",
-            "createBy": 2
+            "createBy": 2,
+            "image": "/imgs/economia.png"
         },
         {
             "nome": "Evento Acolhimento",
             "descricao": "Acolhimento dos novos alunos",
             "data_hora": "2023-07-01",
             "urlsiteoficial": "ifpb.com.br",
-            "createBy": 3
+            "createBy": 3,
+            "image": "/imgs/acolhimento.jpg"
         }
     ],
     "ouvintes_evento": [

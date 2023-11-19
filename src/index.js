@@ -22,6 +22,7 @@ const swaggerUi = require('swagger-ui-express');
 
 const app = express();
 
+app.use(express.static('public'));
 
 
 const swaggerDefinition = {
@@ -73,7 +74,7 @@ const swaggerSpec = swaggerJSDoc(options);
 app.use(express.json())
 app.use(cookieParser());
 app.use(express.static('public'));
-app.use(express.urlencoded({extended: true }));
+app.use(express.urlencoded({extended: false }));
 
 
 
@@ -94,6 +95,7 @@ app.use(router);
 app.use((err, req, res, next) => {
   
   if (isCelebrateError(err)) {
+    console.error(err);
     return res.status(400).json({ error: "Um ou mais campos invalidos!"});
   }
 

@@ -76,8 +76,10 @@ const create = async (req, res) => {
     try{
         const { nome, descricao, data_hora, urlsiteoficial } = req.body;
         const createBy = res.locals.ApiUserId;
+
+        const image = `/imgs/${req.file.filename}`;
         
-        const evento = { nome, descricao, data_hora, urlsiteoficial, createBy }
+        const evento = { nome, descricao, data_hora, urlsiteoficial, createBy, image }
 
         const eventoCriado = await Evento.create(evento);
         res.status(200).json({novoEvento: eventoCriado});

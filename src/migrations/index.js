@@ -24,6 +24,7 @@ async function up() {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT UNIQUE,
             descricao TEXT,
+            image TEXT,
             data_hora DATE,
             urlsiteoficial TEXT,
             createBy INTEGER,

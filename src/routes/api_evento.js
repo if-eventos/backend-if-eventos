@@ -88,6 +88,22 @@ const { celebrate, Joi, Segments } = require("celebrate");
 const middleware = require("../middleware/index");
 const eventoApiController = require("../api_controller/eventoApiController");
 
+const path = require('path');
+const multer = require("multer");
+const { randomBytes } = require('node:crypto');
+const imagesPath = path.join('public', 'imgs');
+
+const parser = multer({
+    storage: multer.diskStorage({
+      destination: function (req, file, callback) {
+        callback(null, imagesPath);
+      },
+      filename: function (req, file, callback) {
+        const fileName = `${randomBytes(16).toString('hex')}-${file.originalname}`;
+        callback(null, fileName);
+      },
+    }),
+});
 
 
 /**
@@ -254,7 +270,7 @@ router.patch('/atualize/:id', middleware.isAPIAuthenticated, celebrate({
  *       400:
  *         description: Nome do evento deve ser único.
  */
-router.post('/criar', middleware.isAPIAuthenticated, celebrate({
+router.post('/criar', middleware.isAPIAuthenticated, parser.single('image'), celebrate({
     
     [Segments.BODY]: Joi.object().keys({
         nome: Joi.string().required(),

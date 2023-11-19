@@ -3,16 +3,16 @@ const { conn } = require("../db");
 async function create(data) {
     const sql = `
         INSERT INTO
-            evento(nome, descricao, data_hora, urlsiteoficial, createBy)
+            evento(nome, descricao, data_hora, urlsiteoficial, createBy, image)
         VALUES
-            (?, ?, ?, ?, ?)
+            (?, ?, ?, ?, ?, ?)
     `;
 
     const db = await conn();
 
-    const { nome, descricao, data_hora, urlsiteoficial, createBy } = data;
+    const { nome, descricao, data_hora, urlsiteoficial, createBy, image } = data;
 
-    const {lastID} = await db.run(sql, [nome, descricao, data_hora, urlsiteoficial, createBy]);
+    const {lastID} = await db.run(sql, [nome, descricao, data_hora, urlsiteoficial, createBy, image]);
 
     return lastID;
 }
