@@ -98,7 +98,7 @@ const eventoApiController = require("../api_controller/eventoApiController");
 
 const path = require('path');
 const multer = require("multer");
-const { randomBytes } = require('node:crypto');
+const crypto = require('crypto');
 const imagesPath = path.join('public', 'imgs', 'events');
 
 const parser = multer({
@@ -107,7 +107,7 @@ const parser = multer({
         callback(null, imagesPath);
       },
       filename: function (req, file, callback) {
-        const fileName = `${randomBytes(16).toString('hex')}-${file.originalname}`;
+        const fileName = `${crypto.randomBytes(16).toString('hex')}-${file.originalname}`;
         callback(null, fileName);
       },
     }),
