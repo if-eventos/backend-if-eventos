@@ -8,6 +8,12 @@ public/imgs/events/*
 !acolhimento.jpg
 !economia.png
 
+public/imgs/users/*
+!gabi.png
+!juju.png
+!lucas.png
+!marcos.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -3,27 +3,36 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
 const User = require('../models/User');
 
-
+const removeImage = require('../imageUtils/removeImage');
 
 
 const store = async (req, res) => {
 
   const { name, email, telefone, minicurriculo, urlsite, curriculo_redesocial, ehPalestrante, password } = req.body;
 
+  let image = null;
+  if (req.file && req.file.filename) {
+    image = `/imgs/users/${req.file.filename}`;
+  }
+
   try {
     const hash = await bcrypt.hash(password, parseInt(process.env.SALT, 10));
-    const newUser = { name, email, telefone, minicurriculo, urlsite, curriculo_redesocial, ehPalestrante, password: hash };
+    const newUser = { name, email, image, telefone, minicurriculo, urlsite, curriculo_redesocial, ehPalestrante, password: hash };
 
     const user = await User.create(newUser);
 
     if (Number.isInteger(user)) {
       res.status(201).json({ status:"Novo usuário criado."});
+      return;
     } else {
+      removeImage(image);
       res.status(400).json({ status: "Email inválido."});
+      return;
     }
 
   } catch (err) {
-      console.error(err);
+    removeImage(image);
+    console.error(err);
   }
 };
 

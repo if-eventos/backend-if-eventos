@@ -160,6 +160,24 @@ const middleware = require("../middleware/index");
 const usersApiController = require("../api_controller/userApiController");
 
 
+const path = require('path');
+const multer = require("multer");
+const crypto = require('crypto');
+const imagesPath = path.join('public', 'imgs', 'users');
+
+const parser = multer({
+    storage: multer.diskStorage({
+      destination: function (req, file, callback) {
+        callback(null, imagesPath);
+      },
+      filename: function (req, file, callback) {
+        const fileName = `${crypto.randomBytes(16).toString('hex')}-${file.originalname}`;
+        callback(null, fileName);
+      },
+    }),
+});
+
+
 /**
  * @swagger
  * /api/v1/user/signup:
@@ -180,7 +198,7 @@ const usersApiController = require("../api_controller/userApiController");
  *       400:
  *         description: Email inválido.
  */
-router.post('/signup', celebrate({
+router.post('/signup', parser.single('image'), celebrate({
     [Segments.BODY]: Joi.object().keys({
         name: Joi.string().required(),
         email: Joi.string().email().required(),
