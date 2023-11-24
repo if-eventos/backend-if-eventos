@@ -280,7 +280,7 @@ router.post('/signin', celebrate({
  *         description: O usuario não existe!
  */
 
-router.patch('/atualizarUser/', middleware.isAPIAuthenticated,
+router.patch('/atualizarUser/', middleware.isAPIAuthenticated, parser.single('image'),
 celebrate({
     [Segments.BODY]: Joi.object().keys({
         name: Joi.string().required(),

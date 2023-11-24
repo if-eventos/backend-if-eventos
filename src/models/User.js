@@ -27,16 +27,16 @@ async function update(id, data) {
         UPDATE
             user
         SET
-            name = ?, email = ?, telefone = ?
+            name = ?, email = ?, telefone = ?, image = ?
         WHERE
             id = ?
     `;
 
     const db = await conn();
 
-    const { name, email, telefone } = data;
+    const { name, email, telefone, image } = data;
 
-    const { changes } = await db.run(sql, [name, email, telefone, id]);
+    const { changes } = await db.run(sql, [name, email, telefone, image, id]);
 
     return changes;
 }
@@ -44,7 +44,7 @@ async function update(id, data) {
 async function readByID(id) {
     const sql = `
         SELECT 
-            user.id, user.name, user.email, user.telefone
+            user.id, user.name, user.email, user.telefone, user.image
         FROM
             user
         WHERE

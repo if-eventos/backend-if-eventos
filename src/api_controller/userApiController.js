@@ -40,25 +40,38 @@ const store = async (req, res) => {
 const editUser = async (req, res) => {
   const idUser = res.locals.ApiUserId;
   const { name, email, telefone } = req.body;
-
-  if (name == null || email == null || telefone == null) {
-    res.status(400).json({error: "Informacoes faltando no body"});
-    return;
-  }
   
+  
+  let image = null;
+  if (req.file && req.file.filename) {
+    image = `/imgs/users/${req.file.filename}`;
+  }
+
   //Verifica se o usuario existe:
   const existe = await User.readByID(idUser)
   if (!existe) {
+    removeImage(image);
     res.status(404).json({error: "O usuario nao existe!"});
     return;
   }
   
-  const dados = { name, email, telefone };
+  let oldImage = existe.image;
+
+  if (name == null || email == null || telefone == null || image == null) {
+    removeImage(image);
+    res.status(400).json({error: "Informacoes faltando no body"});
+    return;
+  }
+  
+  
+  const dados = { name, email, telefone, image };
   try {
     const updated = await User.update(idUser, dados);
+    removeImage(oldImage);
     res.status(200).json({userUpdated:{updated:updated}});
     return;
   } catch (error) {
+    removeImage(image);
     res.status(400).json({error: "Novo email nao disponivel!"});
   }
 };
