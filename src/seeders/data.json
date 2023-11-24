@@ -3,6 +3,7 @@
         {
             "name": "Lucas",
             "email": "lucas@email.com",
+            "image":"/imgs/users/lucas.png",
             "telefone": "91122-4400",
             "password": "$2a$10$hUDXADZWfIq3S0zI0GouO.LM2EZRh1Uyzpy5BYTE5C9WxNgH0cEdy",
             "minicurriculo": "Formado no IFPB",
@@ -13,6 +14,7 @@
         {
             "name": "Juju",
             "email": "juju@email.com",
+            "image":"/imgs/users/juju.png",
             "telefone": "94545-1111",
             "password": "$2a$10$QlpKv/0Cc2irYeW1yDAvjumTLctqauZcptAyMHZn4vE6Z82kyhMma",
             "minicurriculo": "Formado no IFPB",
@@ -23,6 +25,7 @@
         {
             "name": "Marcos",
             "email": "marcos@email.com",
+            "image":"/imgs/users/marcos.png",
             "telefone": "94545-2222",
             "password": "$2a$10$xWTpKhpkfarPEHiYoGL9zuRsdDRBGkm.e5s1M5TiKRlqkbVVE1oOG",
             "minicurriculo": null,
@@ -33,6 +36,7 @@
         {
             "name": "Gabi",
             "email": "gabi@email.com",
+            "image":"/imgs/users/gabi.png",
             "telefone": "94747-3333",
             "password": "$2a$10$6osCY4Lh./lcD8/fXSzGvO9YUjJbI7iNTtXpUdckE6dvZWcRxATEq",
             "minicurriculo": null,

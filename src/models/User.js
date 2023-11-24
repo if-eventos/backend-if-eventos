@@ -3,17 +3,17 @@ const { conn } = require("../db");
 async function create(data) {
     const sql = `
         INSERT INTO 
-            user (name, email, telefone, password, minicurriculo, urlsite, curriculo_redesocial, ehPalestrante)
+            user (name, email, image, telefone, password, minicurriculo, urlsite, curriculo_redesocial, ehPalestrante)
         VALUES
-            (?, ?, ?, ?, ?, ?, ?, ?)
+            (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const db = await conn();
 
-    const { name, email, telefone, password, minicurriculo, urlsite, curriculo_redesocial, ehPalestrante } = data;
+    const { name, email, image, telefone, password, minicurriculo, urlsite, curriculo_redesocial, ehPalestrante } = data;
 
     try {
-        const { lastID } = await db.run(sql, [name, email, telefone, password, minicurriculo, urlsite, curriculo_redesocial, ehPalestrante]);
+        const { lastID } = await db.run(sql, [name, email, image, telefone, password, minicurriculo, urlsite, curriculo_redesocial, ehPalestrante]);
     
         return lastID;
     } catch (error) {

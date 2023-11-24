@@ -8,6 +8,7 @@ async function up() {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
             email TEXT UNIQUE,
+            image TEXT,
             telefone TEXT,
             password TEXT,
 
