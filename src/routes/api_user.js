@@ -42,6 +42,10 @@
  *           type: string
  *           description: As redes sociais do palestrante.
  *           example: Rafael.com
+ *         image:
+ *           type: file
+ *           description: Imagem de perfil do usuario.
+ *           example: foto.png
  *     User:
  *       type: object
  *       properties:
