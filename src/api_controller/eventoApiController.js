@@ -92,7 +92,8 @@ const create = async (req, res) => {
     const { nome, descricao, data_hora, urlsiteoficial } = req.body;
     const createBy = res.locals.ApiUserId;
 
-    const image = `/imgs/events/${req.file.filename}`;
+    let image;
+    (req && req.file && req.file.filename) ? image = `/imgs/events/${req.file.filename}` : image = null;
 
     try{
         
