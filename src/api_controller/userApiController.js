@@ -125,7 +125,8 @@ const authenticate = async (req, res) => {
       const tokenBearer = `Bearer ${token}`;
 
       res.set('Authorization', tokenBearer);
-      res.json({ token });
+      const { userId } = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+      res.json({ token, userId });
     } else {
       console.log('Senha inválida.');
       res.status(401).json({ error: 'Senha inválida.' });

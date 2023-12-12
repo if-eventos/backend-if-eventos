@@ -108,6 +108,10 @@
  *           type: string
  *           description: Token de autorização JWT.
  *           example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+ *         idUser:
+ *           type: string
+ *           description: id do usuario.
+ *           example: 5
  *     UserUpdate:
  *       type: object
  *       properties:
