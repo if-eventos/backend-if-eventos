@@ -26,6 +26,10 @@
  *           type: string
  *           description: O site do evento.
  *           example: www.evento.com
+ *         categoria:
+ *           type: string
+ *           description: A categoria do evento.
+ *           example: educacao
  *         createBy:
  *           type: integer
  *           description: Id do usuário que criou o evento.
@@ -56,6 +60,10 @@
  *           type: string
  *           description: O site do evento.
  *           example: www.evento.com
+ *         categoria:
+ *           type: string
+ *           description: A categoria do evento.
+ *           example: educacao
  *         image:
  *           type: file
  *           description: A imagem do evento.
@@ -79,6 +87,10 @@
  *           type: string
  *           description: O site do evento.
  *           example: www.evento2.com
+ *         categoria:
+ *           type: string
+ *           description: A categoria do evento.
+ *           example: educacao
  *         image:
  *           type: file
  *           description: Nova imagem do evento.
@@ -287,6 +299,7 @@ router.post('/criar',
         descricao: Joi.string().required(),
         data_hora: Joi.string().required(),
         urlsiteoficial: Joi.string().required(),
+        categoria: Joi.string().required(),
       }),
     }),
     eventoApiController.create);

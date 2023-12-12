@@ -89,7 +89,8 @@ const update = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    const { nome, descricao, data_hora, urlsiteoficial } = req.body;
+    console.log(req.body);
+    const { nome, descricao, data_hora, urlsiteoficial, categoria } = req.body;
     const createBy = res.locals.ApiUserId;
 
     let image;
@@ -97,7 +98,7 @@ const create = async (req, res) => {
 
     try{
         
-        const evento = { nome, descricao, data_hora, urlsiteoficial, createBy, image }
+        const evento = { nome, descricao, data_hora, urlsiteoficial, categoria, createBy, image }
 
         const eventoCriado = await Evento.create(evento);
         res.status(200).json({novoEvento: eventoCriado});

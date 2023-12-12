@@ -20,6 +20,17 @@ async function up() {
         )
     `);
 
+    /* 
+     *  Categorias::
+     *  educacao
+     *  saude
+     *  medicina
+     *  direito
+     *  programacao
+     *  jornalismo
+     *  esportes
+     */
+
     await db.run(`
         CREATE TABLE IF NOT EXISTS evento (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,6 +39,7 @@ async function up() {
             image TEXT,
             data_hora DATE,
             urlsiteoficial TEXT,
+            categoria TEXT,
             createBy INTEGER,
             FOREIGN KEY (createBy) REFERENCES user (id)
         )

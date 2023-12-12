@@ -51,6 +51,7 @@
             "descricao": "Uma discussao sobre economia",
             "data_hora": "2023-07-11",
             "urlsiteoficial": "ambiente.com.br",
+            "categoria": "educacao",
             "createBy": 2,
             "image": "/imgs/events/economia.png"
         },
@@ -59,6 +60,7 @@
             "descricao": "Acolhimento dos novos alunos",
             "data_hora": "2023-07-01",
             "urlsiteoficial": "ifpb.com.br",
+            "categoria": "educacao",
             "createBy": 3,
             "image": "/imgs/events/acolhimento.jpg"
         }
