@@ -152,6 +152,41 @@
  *           type: integer
  *           description: Valor 1 se o usuario for palestrante, 0 se não
  *           example: 1
+ *     GetUser:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Nome do usuário.
+ *           example: Rafael Rodrigo
+ *         email:
+ *           type: string
+ *           description: O email do usuario
+ *           example: usuario@email.com
+ *         telefone:
+ *           type: string
+ *           description: O numero de contato do usuário
+ *           example: 99777-9999
+ *         ehPalestrante:
+ *           type: integer
+ *           description: Valor 1 se o usuario for palestrante, 0 se não
+ *           example: 1
+ *         minicurriculo:
+ *           type: integer
+ *           description: ID da comida.
+ *           example: Doutorado em Administração
+ *         urlsite:
+ *           type: string
+ *           description: Website do palestrante.
+ *           example: www.rafael.com
+ *         curriculo_redesocial:
+ *           type: string
+ *           description: As redes sociais do palestrante.
+ *           example: Rafael.com
+ *         image:
+ *           type: string
+ *           description: url para buscar foto de perfil.
+ *           example: imgs/users/gsjabsabsj.png
  */
 
 
@@ -328,5 +363,37 @@ router.delete('/deleteUser/', middleware.isAPIAuthenticated, usersApiController.
  *                     $ref: '#/components/schemas/getAllUsers'
  */
 router.get('/todos', usersApiController.readAll);
+
+
+/**
+ * @swagger
+ * /api/v1/user/{id}:
+ *   get:
+ *     summary: Recupera um usuário da aplicação pelo id.
+ *     description: Recupera um usuário pelo id. Pode ser usada sem autenticação.
+ *     tags:
+ *       - user
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID numérico do user a ser recuperado.
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Busca realizada com sucesso.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               properties:
+ *                 user:
+ *                   $ref: '#/components/schemas/GetUser'
+ *       404:
+ *         description: Usuário de id ${id} não encontrado.
+ *       500:
+ *         description: Internal server error.
+ */
+router.get('/:id', usersApiController.getById);
 
 module.exports = router;

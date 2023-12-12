@@ -136,4 +136,26 @@ const authenticate = async (req, res) => {
   }
 };
 
-module.exports = { store, authenticate, editUser, deleteUser, readAll };
+
+const getById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.readByID(id); 
+  
+    if (user){
+      res.status(200).json({user: user});
+      console.log("Busca realizada com sucesso\n", user);
+      return;
+    } else {
+      res.status(404).json(`Usuário de id ${id} não encontrado.`);
+      console.log(`Busca por usuario de id ${id} falhou: `, user);
+      return;
+    }
+  } catch (error) {
+    res.status(500).json("Internal server error.", error);
+    console.error(error);
+    return;
+  }
+}
+
+module.exports = { store, authenticate, editUser, deleteUser, readAll, getById };

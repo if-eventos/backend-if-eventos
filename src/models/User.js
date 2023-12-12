@@ -44,7 +44,7 @@ async function update(id, data) {
 async function readByID(id) {
     const sql = `
         SELECT 
-            user.id, user.name, user.email, user.telefone, user.image
+            user.id, user.name, user.email, user.telefone, user.image, user.minicurriculo, user.urlsite, user.curriculo_redesocial, user.ehPalestrante
         FROM
             user
         WHERE
