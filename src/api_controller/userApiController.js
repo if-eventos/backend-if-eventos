@@ -119,7 +119,7 @@ const authenticate = async (req, res) => {
       const token = await jwt.sign(
         { userId: user.id },
         process.env.SECRET,
-        { expiresIn: 3600 } // 1h
+        // { expiresIn: 3600 } // 1h
       );
 
       const tokenBearer = `Bearer ${token}`;

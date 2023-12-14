@@ -127,6 +127,10 @@
  *           type: string
  *           description: O numero de contato do usuário
  *           example: 99777-9999
+ *         image:
+ *           type: string
+ *           description: url para buscar foto de perfil.
+ *           example: imgs/users/gsjabsabsj.png
  *     userUpdated:
  *       type: object
  *       properties:
