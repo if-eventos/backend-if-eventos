@@ -64,6 +64,14 @@
  *           type: string
  *           description: A categoria do evento.
  *           example: educacao
+ *         latitude:
+ *           type: string
+ *           description: A latitude do evento.
+ *           example: -6.3791927
+ *         longitude:
+ *           type: string
+ *           description: A longitude do evento.
+ *           example: -38.87812781
  *         image:
  *           type: file
  *           description: A imagem do evento.
@@ -300,6 +308,8 @@ router.post('/criar',
         data_hora: Joi.string().required(),
         urlsiteoficial: Joi.string().required(),
         categoria: Joi.string().required(),
+        latitude: Joi.number(),
+        longitude: Joi.number(),
       }),
     }),
     eventoApiController.create);

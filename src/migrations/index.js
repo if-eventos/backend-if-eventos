@@ -40,6 +40,8 @@ async function up() {
             data_hora DATE,
             urlsiteoficial TEXT,
             categoria TEXT,
+            latitude TEXT,
+            longitude TEXT,
             createBy INTEGER,
             FOREIGN KEY (createBy) REFERENCES user (id)
         )
