@@ -57,17 +57,23 @@ const editUser = async (req, res) => {
   
   let oldImage = existe.image;
 
-  if (name == null || email == null || telefone == null || image == null) {
+  if (name == null || email == null || telefone == null) {
     removeImage(image);
     res.status(400).json({error: "Informacoes faltando no body"});
     return;
+  }
+
+  if (image == null) {
+    image = oldImage || null;
   }
   
   
   const dados = { name, email, telefone, image };
   try {
     const updated = await User.update(idUser, dados);
-    removeImage(oldImage);
+    if (image != oldImage) {
+      removeImage(oldImage);
+    }
     res.status(200).json({userUpdated:{updated:updated}});
     return;
   } catch (error) {
