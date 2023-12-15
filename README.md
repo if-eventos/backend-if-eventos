@@ -1,4 +1,9 @@
-# pw1-atividades
+# backend PDM if-eventos
+Grupo: 
+- Davi de Morais Farias
+- Thalyson Rian Mendes da Silva
+- Jose Igor Venancio de Albuquerque
+#
 
 Aplicação Web Express sobre um site de Eventos Acadêmicos.
 
