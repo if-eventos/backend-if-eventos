@@ -51,7 +51,7 @@
             "descricao": "Uma discussao sobre economia",
             "data_hora": "2023-07-11",
             "urlsiteoficial": "ambiente.com.br",
-            "categoria": "educacao",
+            "categoria": "engenharia-civil",
             "createBy": 2,
             "latitude": "-6.8875354",
             "longitude": "-38.5585313",
@@ -62,11 +62,22 @@
             "descricao": "Acolhimento dos novos alunos",
             "data_hora": "2023-07-01",
             "urlsiteoficial": "ifpb.com.br",
-            "categoria": "educacao",
+            "categoria": "controle-automacao",
             "createBy": 3,
             "latitude": "-6.8875354",
             "longitude": "-38.5585313",
             "image": "/imgs/events/acolhimento.jpg"
+        },
+        {
+            "nome": "Evento Acolhimento Math",
+            "descricao": "Acolhimento dos novos alunos de matemática",
+            "data_hora": "2023-07-01",
+            "urlsiteoficial": "ifpb.com.br",
+            "categoria": "matematica",
+            "createBy": 3,
+            "latitude": "-6.8875354",
+            "longitude": "-38.5585313",
+            "image": "/imgs/events/Matematica-financeira.jpg"
         }
     ],
     "ouvintes_evento": [
