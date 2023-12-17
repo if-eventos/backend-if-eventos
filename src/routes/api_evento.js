@@ -314,4 +314,41 @@ router.post('/criar',
     }),
     eventoApiController.create);
 
+
+    /**
+ * @swagger
+ * /api/v1/evento/inscritos/{id}:
+ *   get:
+ *     summary: Cria um novo evento.
+ *     security:
+ *       - bearerAuth: []
+ *     description: Puxa todos os eventos que o user está inscrito pelo id dele.
+ *     tags:
+ *       - evento
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID numérico do evento que será atualizado.
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Novo evento criado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Evento'
+ *       400:
+ *         description: Nome do evento deve ser único.
+ */
+router.get('/inscritos/:id', 
+  middleware.isAPIAuthenticated,
+  celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      id: Joi.number().required()
+    }),
+  }),
+  eventoApiController.eventosParticipandoUser);
+
 module.exports = router;

@@ -111,4 +111,17 @@ const create = async (req, res) => {
 
 }
 
-module.exports = { readAll, readByID, destroy, update, create };
+const eventosParticipandoUser = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const eventos = await Evento.eventosInscritosUser(id);
+
+        res.status(200).json({eventos: eventos});
+        return
+    } catch (error) {
+        res.status(400).json({error: "Nome do evento deve ser único."});
+    }
+}
+
+module.exports = { readAll, readByID, destroy, update, create, eventosParticipandoUser };

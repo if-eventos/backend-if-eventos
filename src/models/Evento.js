@@ -116,5 +116,21 @@ async function removerPalestrante (idEvento, idPalestrante) {
   
 };
 
+async function eventosInscritosUser (idUser) {
+    const sql = `
+        SELECT evento.* 
+        FROM evento 
+        JOIN ouvintes_evento ON evento.id = ouvintes_evento.idEvento 
+        WHERE ouvintes_evento.idOuvinte = ?;
+    `;
 
-module.exports = { create, readAll, readById, update, destroy, readAllByUser, removerPalestrante };
+    const db = await conn();
+    
+    const eventosInscritos = await db.all(sql, [idUser]);
+
+    return eventosInscritos;
+
+}
+
+
+module.exports = { create, readAll, readById, update, destroy, readAllByUser, removerPalestrante, eventosInscritosUser };
