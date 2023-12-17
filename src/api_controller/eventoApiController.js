@@ -112,7 +112,7 @@ const create = async (req, res) => {
 }
 
 const eventosParticipandoUser = async (req, res) => {
-    const { id } = req.params;
+    const id = res.locals.ApiUserId;
 
     try {
         const eventos = await Evento.eventosInscritosUser(id);
