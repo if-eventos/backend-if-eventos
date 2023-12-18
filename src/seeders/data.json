@@ -78,6 +78,17 @@
             "latitude": "-6.8875354",
             "longitude": "-38.5585313",
             "image": "/imgs/events/Matematica-financeira.jpg"
+        },
+        {
+            "nome": "Evento ADS",
+            "descricao": "Apresentação do curso",
+            "data_hora": "2023-07-01",
+            "urlsiteoficial": "ifpb.com.br",
+            "categoria": "ads",
+            "createBy": 3,
+            "latitude": "-6.8875354",
+            "longitude": "-38.5585313",
+            "image": "/imgs/events/ads.jpg"
         }
     ],
     "ouvintes_evento": [
