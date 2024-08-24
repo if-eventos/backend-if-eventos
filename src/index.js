@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require('fs');
 const { dbFile } = require('./db');
 const path = require('path');
+var cors = require('cors')
 
 const dotenv = require('dotenv').config();
 
@@ -22,6 +23,7 @@ const swaggerUi = require('swagger-ui-express');
 
 const app = express();
 
+app.use(cors())
 app.use(express.static('public'));
 
 
