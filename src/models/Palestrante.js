@@ -42,7 +42,7 @@ async function removerPalestrante(emailUser, idEvent) {
 async function todosPalestrantesEvento(idEvent) {
     const sql = `
         SELECT
-            user.id, user.name, user.telefone, user.email, user.minicurriculo, user.urlsite, user.curriculo_redesocial
+            user.id, user.name, user.telefone, user.email, user.minicurriculo, user.urlsite, user.curriculo_redesocial, user.image
         FROM
             palestrantes_evento INNER JOIN user
         WHERE
