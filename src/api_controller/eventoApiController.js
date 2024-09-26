@@ -62,8 +62,8 @@ const update = async (req, res) => {
         const oldImage = evento.image;
 
         if(evento.createBy == res.locals.ApiUserId) {
-            const { nome, descricao, data_hora, urlsiteoficial } = req.body;
-            const dados = { nome, descricao, data_hora, urlsiteoficial, image };
+            const { nome, descricao, data_hora, local_ou_link } = req.body;
+            const dados = { nome, descricao, data_hora, local_ou_link, image };
 
             try {
                 const eventoAtualizado = await Evento.update(id, dados);
@@ -90,7 +90,7 @@ const update = async (req, res) => {
 
 const create = async (req, res) => {
     console.log(req.body);
-    const { nome, descricao, data_hora, urlsiteoficial, categoria, latitude, longitude } = req.body;
+    const { nome, descricao, data_hora, local_ou_link, categoria, latitude, longitude } = req.body;
     const createBy = res.locals.ApiUserId;
 
     let image;
@@ -98,7 +98,7 @@ const create = async (req, res) => {
 
     try{
         
-        const evento = { nome, descricao, data_hora, urlsiteoficial, categoria, createBy, image, latitude, longitude }
+        const evento = { nome, descricao, data_hora, local_ou_link, categoria, createBy, image, latitude, longitude }
 
         const eventoCriado = await Evento.create(evento);
         res.status(200).json({novoEvento: eventoCriado});

@@ -22,7 +22,7 @@
  *           type: date
  *           description: A data em que o evento ocorrerá,
  *           example: 2023-09-25
- *         urlsiteoficial:
+ *         local_ou_link:
  *           type: string
  *           description: O site do evento.
  *           example: www.evento.com
@@ -56,7 +56,7 @@
  *           type: date
  *           description: A data em que o evento ocorrerá,
  *           example: 2023-09-25
- *         urlsiteoficial:
+ *         local_ou_link:
  *           type: string
  *           description: O site do evento.
  *           example: www.evento.com
@@ -91,7 +91,7 @@
  *           type: date
  *           description: A data em que o evento ocorrerá,
  *           example: 2023-10-25
- *         urlsiteoficial:
+ *         local_ou_link:
  *           type: string
  *           description: O site do evento.
  *           example: www.evento2.com
@@ -266,7 +266,7 @@ router.patch('/atualize/:id', middleware.isAPIAuthenticated, parser.single('imag
         nome: Joi.string().required(),
         descricao: Joi.string().required(),
         data_hora: Joi.string().required(),
-        urlsiteoficial: Joi.string().required(),
+        local_ou_link: Joi.string().required(),
     }),
 
 }), eventoApiController.update);
@@ -306,7 +306,7 @@ router.post('/criar',
         nome: Joi.string().required(),
         descricao: Joi.string().required(),
         data_hora: Joi.string().required(),
-        urlsiteoficial: Joi.string().required(),
+        local_ou_link: Joi.string().required(),
         categoria: Joi.string().required(),
         latitude: Joi.string(),
         longitude: Joi.string(),
