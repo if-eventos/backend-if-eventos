@@ -122,6 +122,22 @@ const eventosParticipandoUser = async (req, res) => {
     } catch (error) {
         res.status(400).json({error: "Nome do evento deve ser único."});
     }
-}
+}   
 
-module.exports = { readAll, readByID, destroy, update, create, eventosParticipandoUser };
+const eventosByUser = async (req, res) => {
+    // console.log("aqui")
+    const userId = req.params.userId; // O ID do usuário vem dos parâmetros da URL
+    try {
+        const eventos = await Evento.readAll()//({ where: { createBy: userId } }); // Supondo que você está usando um ORM como Sequelize
+        const meus_eventos = eventos.filter((event) => event.createBy === userId)
+        if (meus_eventos) {
+            res.status(200).json({ eventos: meus_eventos });
+        } else {
+            res.status(404).json({ error: "Nenhum evento encontrado para este usuário." });
+        }
+    } catch (error) {
+        console.error('Erro ao buscar eventos por usuário:', error);
+        res.status(500).json({ error: "Erro ao buscar eventos para este usuário." });
+    }
+};
+module.exports = { readAll, readByID, destroy, update, create, eventosParticipandoUser, eventosByUser };

@@ -339,4 +339,15 @@ router.get('/inscritos',
   middleware.isAPIAuthenticated,
   eventoApiController.eventosParticipandoUser);
 
+
+router.get('/teste/:userId', celebrate({
+    
+  [Segments.PARAMS]: Joi.object().keys({
+    userId: Joi.number().required(),
+  }),
+
+}),
+  middleware.isAPIAuthenticated,
+  eventoApiController.eventosByUser);
+  
 module.exports = router;
