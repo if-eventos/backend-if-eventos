@@ -90,6 +90,7 @@ const update = async (req, res) => {
 
 const create = async (req, res) => {
     console.log(req.body);
+    const { nome, descricao, data_hora, urlsiteoficial, categoria, latitude, longitude } = req.body;
     const createBy = res.locals.ApiUserId;
 
     let image;
