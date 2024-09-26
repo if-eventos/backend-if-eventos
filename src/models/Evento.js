@@ -3,16 +3,16 @@ const { conn } = require("../db");
 async function create(data) {
     const sql = `
         INSERT INTO
-            evento(nome, descricao, data_hora, local_ou_link, categoria, createBy, image, latitude, longitude)
+            evento(nome, descricao, data_hora, urlsiteoficial, categoria, createBy, image, latitude, longitude)
         VALUES
             (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const db = await conn();
 
-    const { nome, descricao, data_hora, local_ou_link, categoria, createBy, image, latitude, longitude } = data;
+    const { nome, descricao, data_hora, urlsiteoficial, categoria, createBy, image, latitude, longitude } = data;
 
-    const {lastID} = await db.run(sql, [nome, descricao, data_hora, local_ou_link, categoria, createBy, image, latitude, longitude]);
+    const {lastID} = await db.run(sql, [nome, descricao, data_hora, urlsiteoficial, categoria, createBy, image, latitude, longitude]);
 
     return lastID;
 }
@@ -71,16 +71,16 @@ async function update(id, data) {
         UPDATE
             evento
         SET
-            nome = ?, descricao = ?, data_hora = ?, local_ou_link = ?, image = ?
+            nome = ?, descricao = ?, data_hora = ?, urlsiteoficial = ?, image = ?
         WHERE
             id = ?
     `;
 
     const db = await conn();
 
-    const { nome, descricao, data_hora, local_ou_link, image } = data;
+    const { nome, descricao, data_hora, urlsiteoficial, image } = data;
 
-    const { changes } = await db.run(sql, [nome, descricao, data_hora, local_ou_link, image, id]);
+    const { changes } = await db.run(sql, [nome, descricao, data_hora, urlsiteoficial, image, id]);
 
     return changes;
 }

@@ -62,8 +62,8 @@ const update = async (req, res) => {
         const oldImage = evento.image;
 
         if(evento.createBy == res.locals.ApiUserId) {
-            const { nome, descricao, data_hora, local_ou_link } = req.body;
-            const dados = { nome, descricao, data_hora, local_ou_link, image };
+            const { nome, descricao, data_hora, urlsiteoficial } = req.body;
+            const dados = { nome, descricao, data_hora, urlsiteoficial, image };
 
             try {
                 const eventoAtualizado = await Evento.update(id, dados);
@@ -90,7 +90,6 @@ const update = async (req, res) => {
 
 const create = async (req, res) => {
     console.log(req.body);
-    const { nome, descricao, data_hora, local_ou_link, categoria, latitude, longitude } = req.body;
     const createBy = res.locals.ApiUserId;
 
     let image;
@@ -98,7 +97,7 @@ const create = async (req, res) => {
 
     try{
         
-        const evento = { nome, descricao, data_hora, local_ou_link, categoria, createBy, image, latitude, longitude }
+        const evento = { nome, descricao, data_hora, urlsiteoficial, categoria, createBy, image, latitude, longitude }
 
         const eventoCriado = await Evento.create(evento);
         res.status(200).json({novoEvento: eventoCriado});
@@ -124,4 +123,22 @@ const eventosParticipandoUser = async (req, res) => {
     }
 }
 
-module.exports = { readAll, readByID, destroy, update, create, eventosParticipandoUser };
+const eventosByUser = async (req, res) => {
+    const userId = req.params.userId; // O ID do usuário vem dos parâmetros da URL
+
+    try {
+        const eventos = await Evento.findAll({ where: { createBy: userId } }); // Supondo que você está usando um ORM como Sequelize
+
+        if (eventos.length > 0) {
+            res.status(200).json({ eventos });
+        } else {
+            res.status(404).json({ error: "Nenhum evento encontrado para este usuário." });
+        }
+    } catch (error) {
+        console.error('Erro ao buscar eventos por usuário:', error);
+        res.status(500).json({ error: "Erro ao buscar eventos para este usuário." });
+    }
+};
+
+
+module.exports = { readAll, readByID, destroy, update, create, eventosParticipandoUser, eventosByUser };

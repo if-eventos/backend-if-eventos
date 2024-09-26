@@ -38,7 +38,7 @@ async function up() {
             descricao TEXT,
             image TEXT,
             data_hora DATE,
-            local_ou_link TEXT,
+            urlsiteoficial TEXT,
             categoria TEXT,
             latitude TEXT,
             longitude TEXT,
