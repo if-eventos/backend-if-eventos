@@ -124,4 +124,16 @@ const eventosParticipandoUser = async (req, res) => {
     }
 }
 
-module.exports = { readAll, readByID, destroy, update, create, eventosParticipandoUser };
+const readAllByUser = async (req, res) => {
+    const idUser = req.params.id; 
+    const eventos = await Evento.readAllByUser(idUser); 
+
+    if (eventos && eventos.length > 0) {
+        res.status(200).json({ eventos }); 
+    } else {
+        res.status(404).json({ error: "Nenhum evento encontrado para este usuário." });
+    }
+};
+
+
+module.exports = { readAll, readByID, destroy, update, create, eventosParticipandoUser, readAllByUser };

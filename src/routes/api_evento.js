@@ -339,4 +339,16 @@ router.get('/inscritos',
   middleware.isAPIAuthenticated,
   eventoApiController.eventosParticipandoUser);
 
+router.get('/user/:id', middleware.isAPIAuthenticated, async (req, res) => {
+    try {
+        const idUser = req.params.id; // Obter ID do usuário da rota
+        const eventos = await eventoApiController.readAllByUser(idUser); // Chamar função do controller
+        res.json({ eventos }); // Retornar eventos em formato JSON
+    } catch (error) {
+        console.error("Erro ao buscar eventos:", error);
+        res.status(500).json({ error: 'Erro ao buscar eventos.' });
+    }
+});
+
+
 module.exports = router;
